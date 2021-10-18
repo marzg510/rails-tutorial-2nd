@@ -66,3 +66,10 @@ git add -A
 git commit -m "heroku create"
 git push heroku master
 ```
+
+
+2.1アプリケーションの計画
+
+``` bash
+rails _6.0.3_ new toy_app
+```
