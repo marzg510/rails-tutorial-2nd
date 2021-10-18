@@ -24,3 +24,25 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 nvm install v12.16.3
 rails _6.0.3_ new hello_app
 
+1.3.1Bundler
+
+``` bash
+cd hello_app/
+bundle install
+```
+
+1.3.2rails server
+
+``` bash
+cd hello_app/
+rails server
+
+```
+
+http://localhost:3000/
+
+1.3.4Hello, world!
+
+
+- Applicationコントローラにhelloを追加する
+- ルートルーティングを設定する
