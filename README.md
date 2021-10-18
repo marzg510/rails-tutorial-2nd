@@ -54,3 +54,15 @@ Gemfile
 ``` bash
 bundle install --without production
 ```
+
+git commit
+
+
+``` bash
+heroku --version
+heroku login --interactive
+heroku create rails-tutorial-2nd-m510
+git add -A
+git commit -m "heroku create"
+git push heroku master
+```
