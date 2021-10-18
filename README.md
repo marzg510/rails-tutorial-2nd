@@ -43,6 +43,14 @@ http://localhost:3000/
 
 1.3.4Hello, world!
 
-
 - Applicationコントローラにhelloを追加する
 - ルートルーティングを設定する
+
+1.5デプロイする
+
+Gemfile
+本番用以外のgemをインストールする
+
+``` bash
+bundle install --without production
+```
