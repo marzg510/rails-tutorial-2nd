@@ -72,4 +72,5 @@ git push heroku master
 
 ``` bash
 rails _6.0.3_ new toy_app
+bundle install --without production
 ```
