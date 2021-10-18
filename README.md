@@ -74,3 +74,39 @@ git push heroku master
 rails _6.0.3_ new toy_app
 bundle install --without production
 ```
+
+``` bash
+heroku create toy-app-m510
+git push heroku master
+```
+
+2.2Usersリソース
+
+``` bash
+rails generate scaffold User name:string email:string
+rails db:migrate
+```
+
+2.3Micropostsリソース
+
+``` bash
+rails genarate scaffold Micropost content:text user_id:integer
+rails db:migrate
+```
+
+
+2.3.3ユーザーはたくさんマイクロポストを持っている
+
+``` bash
+```
+
+
+2.3.5アプリケーションをデプロイする
+
+``` bash
+git commit
+git push heroku
+heroku logs
+heroku run rails db:migrate
+```
+
