@@ -120,3 +120,10 @@ cd sample_app
 bundle install --without production
 
 ```
+
+3.2.1静的なページの生成
+
+
+``` bash
+
+```
