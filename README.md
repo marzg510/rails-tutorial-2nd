@@ -165,3 +165,42 @@ bundle exec guard
 git checkout -b rails-flavored-ruby
 
 ```
+
+## 4.2文字列とメソッド
+
+### 4.2.1
+
+- 演習
+
+``` ruby
+# 1
+city = "蕨"
+prefecture = "埼玉"
+# 2
+puts "#{prefecture}県 #{city}市"
+# 3
+puts "#{prefecture}県	#{city}市"
+#4
+puts '#{prefecture}県	#{city}市'
+
+```
+
+### 4.2.2
+
+- 演習
+
+``` ruby
+# 1
+"racecar".length
+# 2
+"racecar".reverse
+# 3
+s = "racecar"
+s = s.reverse
+# 4
+puts "It's a palindrome!" if s == s.reverse
+
+```
+
+### 4.2.3メソッドの定義
+
