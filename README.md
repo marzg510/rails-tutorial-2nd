@@ -110,3 +110,13 @@ heroku logs
 heroku run rails db:migrate
 ```
 
+第3章
+ほぼ静的なページの作成
+3.1セットアップ
+
+``` bash
+rails _6.0.3_ new sample_app
+cd sample_app
+bundle install --without production
+
+```
