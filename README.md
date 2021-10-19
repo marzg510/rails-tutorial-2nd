@@ -110,8 +110,8 @@ heroku logs
 heroku run rails db:migrate
 ```
 
-第3章
-ほぼ静的なページの作成
+# 第3章 ほぼ静的なページの作成
+
 3.1セットアップ
 
 ``` bash
@@ -150,10 +150,18 @@ rails test
 
 3.6.2Guardによるテストの自動化
 
-
 ``` bash
 bundle exec guard init   # Guardfileサンプル生成
 
 bundle exec guard
+
+```
+
+# 第4章 Rails風味のRuby
+
+## 4.1動機
+
+``` bash
+git checkout -b rails-flavored-ruby
 
 ```
