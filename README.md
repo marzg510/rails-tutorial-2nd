@@ -147,3 +147,13 @@ rails db:migrate
 rails test
 
 ```
+
+3.6.2Guardによるテストの自動化
+
+
+``` bash
+bundle exec guard init   # Guardfileサンプル生成
+
+bundle exec guard
+
+```
