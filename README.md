@@ -125,5 +125,25 @@ bundle install --without production
 
 
 ``` bash
+rails generate controller StaticPages home help
+
+```
+
+- 演習
+
+``` bash
+rails generate controller Foo bar baz
+
+rails destroy  controller Foo bar baz
+
+
+```
+
+3.3.1最初のテスト
+
+``` bash
+rails db:migrate
+
+rails test
 
 ```
