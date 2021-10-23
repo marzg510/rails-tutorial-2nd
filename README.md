@@ -204,3 +204,27 @@ puts "It's a palindrome!" if s == s.reverse
 
 ### 4.2.3メソッドの定義
 
+- 演習
+
+``` ruby
+#1
+def palindrome_tester(s)
+  if s == s.reverse
+    puts "It's a palindrome!"
+  else
+    puts "It's not a palindrome."
+  end
+end
+
+#2
+>> palindrome_tester("racecar")
+It's a palindrome!
+=> nil
+>> palindrome_tester("onomatopoeia")
+It's not a palindrome.
+=> nil
+
+#3
+palindrome_tester("racecar").nil?
+
+```
