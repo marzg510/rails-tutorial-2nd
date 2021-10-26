@@ -281,3 +281,117 @@ a = a.join
 => "oforba"
 
 ```
+
+
+### 4.3.3ハッシュとシンボル
+
+- 演習
+
+``` ruby
+#1
+h = { 'one' => 'uno', 'two' => 'dos', 'three' => 'tres' }
+h.each do |key,value|
+  puts "'#{key}'はスペイン語で'#{value}'"
+end
+
+#2
+person1 = { :first => 'm', :last => 'g' }
+person2 = { :first => 'm2', :last => 'g2' }
+person3 = { :first => 'm3', :last => 'g3' }
+
+params[:father] = person1
+params[:mother] = person2
+params[:child] = person3
+
+params[:father][:first] == person1[:first]
+params[:father][:last] == person1[:last]
+params[:mother][:first] == person2[:first]
+params[:mother][:last] == person2[:last]
+params[:child][:first] == person3[:first]
+params[:child][:last] == person3[:last]
+
+#3
+user = { :name => 'm', :email => 'g', :password_digest => ('a'..'z').to_a.shuffle[0..15].join }
+
+#4
+{ "a" => 100, "b" => 200 }.merge({ "b" => 300 })
+=> {"a"=>100, "b"=>300}
+
+
+```
+
+## 4.4Rubyにおけるクラス
+
+### 4.4.1コンストラクタ
+
+- 演習
+
+``` ruby
+#1
+
+(1..10)
+
+#2
+
+Range.new(1,10)
+
+#3
+
+>> (1..10) == Range.new(1,10)
+=> true
+
+```
+
+### 4.4.2クラス継承
+
+- 演習
+
+``` ruby
+#1
+>> Range.class.superclass
+=> Module
+>> Range.class.superclass.superclass
+=> Object
+>> Hash.class.superclass
+=> Module
+>> Hash.class.superclass.superclass
+=> Object
+>> Symbol.class.superclass
+=> Module
+
+#2
+>> class Word2 < String
+>>   def palindrome?
+>>     self == reverse
+>>   end
+>> end
+
+```
+
+
+### 4.4.3組み込みクラスの変更
+
+
+- 演習
+
+``` ruby
+#1
+"racecar".palindrome?
+
+#2
+class String
+  def shuffle
+    self.split('').shuffle.join
+  end
+end
+"test".shuffle
+
+#3
+class String
+  def shuffle
+    split('').shuffle.join
+  end
+end
+"test".shuffle
+
+```
