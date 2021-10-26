@@ -228,3 +228,56 @@ It's not a palindrome.
 palindrome_tester("racecar").nil?
 
 ```
+
+### 4.2.4titleヘルパー、再び
+
+### 4.3他のデータ構造
+
+- 演習
+
+``` ruby
+#1
+a = "A man,a plan,a canal, Panama".split(',')
+
+#2
+a = a.join
+
+#3
+('a'..'z').to_a[7]
+('a'..'z').to_a[-7]
+
+```
+
+### 4.3.2ブロック
+
+- 演習
+
+``` ruby
+#1
+(0..16).map { |i| i ** 2 }
+
+#2
+>> def yeller(s)
+>>   s.map { |c| c.upcase }.join
+>> end
+=> :yeller
+>> yeller(%w[o l d])
+=> "OLD"
+
+#3
+>> def random_subdomain
+>>   ('a'..'z').to_a.shuffle[0..7].join
+>> end
+=> :random_subdomain
+>> random_subdomain
+=> "uzmokfnq"
+
+#4
+>> def string_shuffle(s)
+>>   s.split('').shuffle.join
+>> end
+=> :string_shuffle
+>> string_shuffle("foobar")
+=> "oforba"
+
+```
