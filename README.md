@@ -428,3 +428,15 @@ git merge rails-favored-ruby
 ```
 
 # 第5章 レイアウトを作成する
+
+## 5.1構造を追加する
+
+```bash
+git checkout -b filling-in-layout
+```
+
+- 演習
+
+``` ruby
+# 1
+```
