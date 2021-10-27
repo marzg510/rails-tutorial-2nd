@@ -427,3 +427,4 @@ git merge rails-favored-ruby
 
 ```
 
+# 第5章 レイアウトを作成する
