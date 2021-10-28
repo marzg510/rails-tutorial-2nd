@@ -439,4 +439,8 @@ git checkout -b filling-in-layout
 
 ``` ruby
 # 1
+curl -OL https://cdn.learnenough.com/kitten.jpg
 ```
+
+### 5.1.2BootstrapとカスタムCSS
+
