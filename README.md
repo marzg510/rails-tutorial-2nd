@@ -444,3 +444,8 @@ curl -OL https://cdn.learnenough.com/kitten.jpg
 
 ### 5.1.2BootstrapとカスタムCSS
 
+## 5.2Sassとアセットパイプライン
+
+## 5.3レイアウトのリンク
+
+### 5.3.3名前付きルート
