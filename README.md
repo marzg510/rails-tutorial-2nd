@@ -452,3 +452,19 @@ curl -OL https://cdn.learnenough.com/kitten.jpg
 
 ### 5.3.4リンクのテスト
 
+## 5.4ユーザー登録: 最初のステップ
+
+### 5.4.1Usersコントローラ
+
+```bash
+rails generate controller Users new
+
+```
+
+### 5.4.2ユーザー登録用URL
+
+演習
+
+```bash
+
+```
