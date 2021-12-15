@@ -475,5 +475,125 @@ rails generate controller Users new
 
 ### 6.1.1データベースの移行
 
-
 ### 6.1.4ユーザーオブジェクトを検索する
+
+### 6.1.5 ユーザーオブジェクトを更新する
+
+## 6.2ユーザーを検証する
+
+### 6.2.1有効性を検証する
+
+
+``` bash
+rails test:models
+```
+
+#### 演習
+
+``` ruby
+u = User.new()
+u.valid?
+u.errors.messages[:email]
+```
+
+``` shell
+rails generate migration add_index_to_users_email
+```
+
+### 6.2.5 一意性を検証する
+
+#### 演習
+
+``` ruby
+```
+
+## 6.3セキュアなパスワードを追加する
+
+### 6.3.1ハッシュ化されたパスワード
+
+### 6.3.2ユーザーがセキュアなパスワードを持っている
+
+#### 演習
+
+``` ruby
+>> user = User.new(name: "test", email:"test@test.com")
+   (0.2ms)  begin transaction
+=> #<User id: nil, name: "test", email: "test@test.com", created_at: nil, updated_at: nil, password_digest: nil>
+>> user.valid?
+  User Exists? (0.4ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?  [["email", "test@test.com"], ["LIMIT", 1]]
+=> false
+>> 
+```
+
+### 6.3.3パスワードの最小文字数
+
+``` ruby
+>> user = User.new(name: "test", email:"test@test.com", password:"12345", password_confirmation: "12345")
+=> #<User id: nil, name: "test", email: "test@test.com", created_at: nil, updated_at: nil, password_digest: [FILTERED]>
+>> user.valid?
+  User Exists? (0.3ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?  [["email", "test@test.com"], ["LIMIT", 1]]
+=> false
+>> user.errors.full_messages
+=> ["Password is too short (minimum is 6 characters)"]
+```
+
+### 6.3.4ユーザーの作成と認証
+
+```
+>> user.authenticate("not_the_right_password")
+=> false
+>> user.authenticate("foobar")
+=> #<User id: 1, name: "Micael Hartl", email: "michael@example.com", created_at: "2021-12-15 09:45:36", updated_at: "2021-12-15 09:45:36", password_digest: [FILTERED]>
+>> user.authenticate("foobaz")
+=> false
+```
+
+
+#### 演習
+
+``` ruby
+>> user = User.find_by(email:"michael@example.com")
+   (1.1ms)  SELECT sqlite_version(*)
+  User Load (0.6ms)  SELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?  [["email", "michael@example.com"], ["LIMIT", 1]]
+>> user.name = "test"
+=> "test"
+>> user.save
+   (0.1ms)  begin transaction
+  User Exists? (0.3ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?  [["email", "michael@example.com"], ["id", 1], ["LIMIT", 1]]
+   (0.2ms)  rollback transaction
+=> false
+>> user.valid?
+  User Exists? (0.3ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?  [["email", "michael@example.com"], ["id", 1], ["LIMIT", 1]]
+=> false
+>> user.errors.full_messages
+=> ["Password can't be blank", "Password is too short (minimum is 6 characters)"]
+>> user
+=> #<User id: 1, name: "test", email: "michael@example.com", created_at: "2021-12-15 09:45:36", updated_at: "2021-12-15 09:45:36", password_digest: [FILTERED]>
+>> user.reload
+  User Load (0.8ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+=> #<User id: 1, name: "Micael Hartl", email: "michael@example.com", created_at: "2021-12-15 09:45:36", updated_at: "2021-12-15 09:45:36", password_digest: [FILTERED]>
+>> user.update(name:"test")
+   (0.1ms)  begin transaction
+  User Exists? (0.3ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?  [["email", "michael@example.com"], ["id", 1], ["LIMIT", 1]]
+   (2.5ms)  rollback transaction
+=> false
+>> user.valid?
+  User Exists? (0.3ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?  [["email", "michael@example.com"], ["id", 1], ["LIMIT", 1]]
+=> false
+>> user.errors.full_messages
+=> ["Password can't be blank", "Password is too short (minimum is 6 characters)"]
+>> user.reload
+  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+=> #<User id: 1, name: "Micael Hartl", email: "michael@example.com", created_at: "2021-12-15 09:45:36", updated_at: "2021-12-15 09:45:36", password_digest: [FILTERED]>
+>> user.update_attribute(:name, "test")
+   (0.1ms)  begin transaction
+  User Update (4.1ms)  UPDATE "users" SET "name" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["name", "test"], ["updated_at", "2021-12-15 09:57:41.499694"], ["id", 1]]
+   (627.6ms)  commit transaction
+=> true
+>> user.name
+=> "test"
+>> user.reload
+  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+=> #<User id: 1, name: "test", email: "michael@example.com", created_at: "2021-12-15 09:45:36", updated_at: "2021-12-15 09:57:41", password_digest: [FILTERED]>
+>> 
+```
