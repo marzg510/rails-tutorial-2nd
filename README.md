@@ -59,6 +59,7 @@ git commit
 
 
 ``` bash
+sudo snap install --classic heroku
 heroku --version
 heroku login --interactive
 heroku create rails-tutorial-2nd-m510
@@ -597,3 +598,21 @@ rails generate migration add_index_to_users_email
 => #<User id: 1, name: "test", email: "michael@example.com", created_at: "2021-12-15 09:45:36", updated_at: "2021-12-15 09:57:41", password_digest: [FILTERED]>
 >> 
 ```
+
+# 第7章 ユーザー登録
+
+## 7.1ユーザーを表示する
+
+### 7.1.1デバッグとRails環境
+
+テスト環境
+```bash
+rails console -e test
+```
+
+### 7.1.2Usersリソース
+
+### 7.1.3debuggerメソッド
+
+
+### 7.1.4Gravatar画像とサイドバー
